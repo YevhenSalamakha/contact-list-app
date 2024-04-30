@@ -3,5 +3,21 @@
   height: 80px;
   width: 100%;
 
-  background-color: rgb(192, 192, 192);
+  .header-nav-menu {
+    a {
+      cursor: pointer;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      color: white;
+
+      mat-icon {
+        color: white;
+      }
+    }
+
+    a:first-child {
+      max-height: 24px;
+    }
+  }
 }
