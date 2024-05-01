@@ -19,5 +19,10 @@
     a:first-child {
       max-height: 24px;
     }
+
+    .header-nav-menu-items {
+      display: flex;
+      gap: 30px;
+    }
   }
 }

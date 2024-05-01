@@ -36,4 +36,21 @@ export class ContactsService {
   public getContactList(): Contact[] {
     return this.contactList;
   }
+
+  public createContact(newContact: Contact): void {
+    const highestId = Math.max(
+      ...this.contactList.map((contact) => contact.id),
+      0
+    );
+
+    this.contactList.push({
+      id: highestId + 1,
+      firstName: newContact.firstName,
+      lastName: newContact.lastName,
+      phoneNumber: newContact.phoneNumber,
+      homeAddress: newContact.homeAddress,
+    });
+
+    console.log(this.contactList);
+  }
 }
