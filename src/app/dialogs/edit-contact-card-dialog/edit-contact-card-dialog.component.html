@@ -1,0 +1,47 @@
+<div class="create-contact-container">
+  <h1>Edit Contact</h1>
+
+  <form [formGroup]="updateForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>Enter your First Name</mat-label>
+      <input matInput formControlName="firstName" required />
+      @if (updateForm.controls["firstName"].hasError('required')) {
+      <mat-error>First Name Reqiured</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your Last Name</mat-label>
+      <input matInput formControlName="lastName" required />
+      @if (updateForm.controls["lastName"].hasError('required')) {
+      <mat-error>Last Name Reqiured</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your Phone Number</mat-label>
+      <input matInput formControlName="phoneNumber" required />
+
+      @if (updateForm.controls["phoneNumber"].hasError('required')) {
+      <mat-error>Phone Number Reqiured</mat-error>
+      } @if (updateForm.controls["phoneNumber"].hasError('phoneNumberFormat')) {
+      <mat-error>Phone Number invalid</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your Home Address</mat-label>
+      <input matInput formControlName="homeAddress" required />
+      @if (updateForm.controls["homeAddress"].hasError('required')) {
+      <mat-error>Home Address Reqiured</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="create-contact-buttons">
+      <button (click)="onCancel()" mat-raised-button color="secondary">
+        Cancel
+      </button>
+      <button type="submit" mat-raised-button color="primary">save</button>
+    </div>
+  </form>
+</div>

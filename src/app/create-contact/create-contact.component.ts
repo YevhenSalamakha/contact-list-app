@@ -37,6 +37,7 @@ export class CreateContactComponent implements OnInit {
 
     if (this.contactForm.valid) {
       this.contactService.createContact(newContact);
+      this.router.navigateByUrl("contact-list");
     }
   }
 

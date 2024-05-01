@@ -19,6 +19,14 @@ const routes: Routes = [
         (m) => m.CreateContactModule
       ),
   },
+
+  {
+    path: "contact-details",
+    loadChildren: () =>
+      import("./contact-card-details/contact-card-details.module").then(
+        (m) => m.ContactCardDetailsModule
+      ),
+  },
 ];
 
 @NgModule({

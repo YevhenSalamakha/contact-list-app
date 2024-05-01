@@ -6,7 +6,17 @@ import { Injectable } from "@angular/core";
 export class StorageService {
   constructor() {}
 
-  //   public setDataToLocaleStorage(key: string, value: Contact | Contact[]): void {
-  //     localStorage.setItem(key, value);
-  //   }
+  public setDataToLocaleStorage(key: string, value: any): void {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  public getItemFromLocaleStorage(key: string) {
+    const item = localStorage.getItem(key);
+
+    if (item) {
+      return JSON.parse(item);
+    }
+
+    return null;
+  }
 }
