@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 import { Contact } from "../interfaces/contact.interface";
 import { ContactsService } from "../services/contacts.service";
 
@@ -6,6 +6,7 @@ import { ContactsService } from "../services/contacts.service";
   selector: "contact-list",
   templateUrl: "./contact-list.component.html",
   styleUrls: ["./contact-list.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactListComponent implements OnInit {
   public contactList: Contact[] = [];

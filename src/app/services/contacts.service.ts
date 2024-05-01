@@ -33,7 +33,7 @@ export class ContactsService {
 
   constructor() {}
 
-  public getContactList() {
+  public getContactList(): Contact[] {
     return this.contactList;
   }
 }

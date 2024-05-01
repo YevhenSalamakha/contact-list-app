@@ -1,0 +1,20 @@
+<mat-card class="card-container">
+  <mat-card-header>
+    <mat-card-title>{{ contactCardInfo.firstName }}</mat-card-title>
+    <mat-card-subtitle>{{ contactCardInfo.lastName }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>phone number: {{ contactCardInfo.phoneNumber }}</p>
+  </mat-card-content>
+  <mat-card-content>
+    <p>home address: {{ contactCardInfo.homeAddress }}</p>
+  </mat-card-content>
+  <mat-card-actions class="card-action-buttons">
+    <button mat-raised-button color="primary">
+      <mat-icon class="material-symbols-outlined" fontIcon="edit"></mat-icon>
+    </button>
+    <button mat-button>
+      <mat-icon class="material-symbols-outlined" fontIcon="delete"></mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
