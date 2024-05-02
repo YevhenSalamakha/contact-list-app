@@ -1,5 +1,10 @@
 <div class="contact-list-container">
-  <ng-container *ngFor="let card of contactList">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput [formControl]="searchControl" />
+  </mat-form-field>
+
+  <ng-container *ngFor="let card of contactList | filter : searchString">
     <app-contact-card [contactCardInfo]="card"></app-contact-card>
   </ng-container>
 </div>

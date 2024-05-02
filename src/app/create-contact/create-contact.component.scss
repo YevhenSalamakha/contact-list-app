@@ -1,6 +1,8 @@
+@use "../../assets/scss/variables" as *;
+
 :host {
   padding: 20px;
-  background-color: #c6c1ff;
+  background-color: $light-periwinkle;
   width: 80%;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -12,7 +14,7 @@
   align-items: center;
   justify-content: center;
   padding: 10px;
-  background-color: #c6c1ff;
+  background-color: $light-periwinkle;
 
   h1 {
     align-self: flex-start;

@@ -1,3 +1,5 @@
+@use "../../../assets/scss/variables" as *;
+
 .header-container {
   display: block;
   height: 80px;
@@ -9,10 +11,10 @@
       display: flex;
       gap: 6px;
       align-items: center;
-      color: white;
+      color: $white;
 
       mat-icon {
-        color: white;
+        color: $white;
       }
     }
 
@@ -22,7 +24,7 @@
 
     .header-nav-menu-items {
       display: flex;
-      gap: 30px;
+      gap: 20px;
     }
   }
 }

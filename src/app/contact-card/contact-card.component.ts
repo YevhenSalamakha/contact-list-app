@@ -3,10 +3,12 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
+  OnDestroy,
   OnInit,
 } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
 import { EditContactCardDialogComponent } from "../dialogs/edit-contact-card-dialog/edit-contact-card-dialog.component";
 import { Contact } from "../interfaces/contact.interface";
 import { ContactsService } from "../services/contacts.service";
@@ -17,9 +19,11 @@ import { ContactsService } from "../services/contacts.service";
   styleUrls: ["./contact-card.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ContactCardComponent implements OnInit {
+export class ContactCardComponent implements OnInit, OnDestroy {
   @Input()
   contactCardInfo!: Contact;
+  private filterFormSubsription!: Subscription;
+
   constructor(
     public dialog: MatDialog,
     private cdr: ChangeDetectorRef,
@@ -36,7 +40,7 @@ export class ContactCardComponent implements OnInit {
       data: contactToEdit,
     });
 
-    dialogRef.afterClosed().subscribe(() => {
+    this.filterFormSubsription = dialogRef.afterClosed().subscribe(() => {
       this.cdr.detectChanges();
     });
   }
@@ -50,5 +54,11 @@ export class ContactCardComponent implements OnInit {
 
     this.contactsService.findExtraDetailsCard(extraDetaildsContact);
     this.router.navigateByUrl("contact-details");
+  }
+
+  ngOnDestroy(): void {
+    if (this.filterFormSubsription) {
+      this.filterFormSubsription.unsubscribe();
+    }
   }
 }

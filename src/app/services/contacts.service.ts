@@ -1,40 +1,17 @@
 import { Injectable } from "@angular/core";
 import { Contact } from "../interfaces/contact.interface";
+import { contactList } from "./services.constants";
 import { StorageService } from "./storage.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class ContactsService {
+  public readonly contactList: Contact[] = contactList;
   public extraDetailsCard!: Contact;
-  public contactList: Contact[] = [
-    {
-      id: 1,
-      firstName: "Slavik",
-      lastName: "Bandura",
-      phoneNumber: "000-111-2222",
-      homeAddress: "shevchenka 12/6",
-    },
-
-    {
-      id: 2,
-      firstName: "Yuriy",
-      lastName: "Bondarenko",
-      phoneNumber: "312-114-256",
-      homeAddress: "kalnyshevskogo 11/3",
-    },
-
-    {
-      id: 3,
-      firstName: "Igor",
-      lastName: "Smalets",
-      phoneNumber: "412-333-1662",
-      homeAddress: "horodotska 250/20",
-    },
-  ];
 
   constructor(private storageService: StorageService) {
-    this.storageService.setDataToLocaleStorage("contactList", this.contactList);
+    this.storageService.initLocaleStorageValue("contactList", this.contactList);
   }
 
   public getContactList(): Contact[] {
@@ -46,20 +23,24 @@ export class ContactsService {
   }
 
   public createContact(newContact: Contact): void {
-    const highestId = Math.max(
-      ...this.contactList.map((contact) => contact.id),
-      0
-    );
+    let highestId: number = 0;
+
+    this.contactList.forEach((contact) => {
+      if (contact.id > highestId) {
+        highestId = contact.id;
+      }
+    });
 
     this.contactList.push({
-      id: highestId + 1,
+      id: ++highestId,
       firstName: newContact.firstName,
       lastName: newContact.lastName,
       phoneNumber: newContact.phoneNumber,
       homeAddress: newContact.homeAddress,
     });
 
-    this.storageService.setDataToLocaleStorage("newContact", newContact);
+    newContact.id = highestId;
+    this.storageService.setItemToLocaleStorage("contactList", newContact);
   }
 
   public updateContact(updatedContact: Contact): void {
@@ -70,8 +51,8 @@ export class ContactsService {
     this.contactList[index].phoneNumber = updatedContact.phoneNumber;
     this.contactList[index].homeAddress = updatedContact.homeAddress;
 
-    this.storageService.setDataToLocaleStorage(
-      "updatedContact",
+    this.storageService.updateItemInLocaleStorage(
+      "contactList",
       updatedContact
     );
   }
@@ -80,6 +61,7 @@ export class ContactsService {
     const index = this.findContactIndex(contactToDelete);
 
     this.contactList.splice(index, 1);
+    this.storageService.deleteItemFromLocaleStorage("contactList", index);
   }
 
   public findContactIndex(contactToFindIndex: Contact): number {

@@ -1,7 +1,9 @@
+@use "../../assets/scss/variables" as *;
+
 :host {
   padding: 20px;
-  background-color: #c6c1ff;
-  width: 30%;
+  background-color: $light-periwinkle;
+  min-width: 40%;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -11,7 +13,7 @@
   align-items: center;
   justify-content: space-around;
   padding: 10px;
-  background-color: #c6c1ff;
+  background-color: $light-periwinkle;
 
   ul {
     list-style: inside;
