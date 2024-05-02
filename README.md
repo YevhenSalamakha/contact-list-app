@@ -8,9 +8,6 @@ Package Manager: npm 9.8.1
 OS: win32 x64
 
 Angular: 17.3.6
-... animations, cdk, cli, common, compiler, compiler-cli, core
-... forms, material, platform-browser, platform-browser-dynamic
-... router
 
 Package                         Version
 ---------------------------------------------------------
