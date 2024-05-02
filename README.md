@@ -2,6 +2,27 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
+Angular CLI: 17.3.6
+Node: 18.18.0
+Package Manager: npm 9.8.1
+OS: win32 x64
+
+Angular: 17.3.6
+... animations, cdk, cli, common, compiler, compiler-cli, core
+... forms, material, platform-browser, platform-browser-dynamic
+... router
+
+Package                         Version
+---------------------------------------------------------
+@angular-devkit/architect       0.1703.6
+@angular-devkit/build-angular   17.3.6
+@angular-devkit/core            17.3.6
+@angular-devkit/schematics      17.3.6
+@schematics/angular             17.3.6
+rxjs                            7.8.1
+typescript                      5.4.5
+zone.js                         0.14.4
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
